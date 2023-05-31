@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 const ImageUploader = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -13,7 +13,12 @@ const ImageUploader = () => {
     }
 
     const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const base64data = reader.result as string;
+      setSelectedImage(base64data);
+    };
   };
 
   const handleRemoveImage = () => {
@@ -22,6 +27,10 @@ const ImageUploader = () => {
       fileInputRef.current.value = "";
     }
   };
+
+  useEffect(() => {
+    console.log(" selectedImage : ", selectedImage);
+  }, [selectedImage]);
 
   return (
     <div>
