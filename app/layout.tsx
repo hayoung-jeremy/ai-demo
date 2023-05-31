@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Play } from "next/font/google";
 
+import Provider from "./providers";
+
 const inter = Play({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

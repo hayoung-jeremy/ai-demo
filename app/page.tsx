@@ -1,4 +1,3 @@
-"use client";
 import { ImageUploader } from "@/src/components";
 
 export default function Home() {
