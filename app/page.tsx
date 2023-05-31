@@ -1,4 +1,4 @@
-import { ImageUploader } from "@/src/components";
+import { ImageUploader, ImageUpscaler } from "@/src/components";
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <h1>Hi</h1>
       <div className="border p-5 flex flex-col gap-4">
         <ImageUploader />
+        <ImageUpscaler />
       </div>
     </main>
   );

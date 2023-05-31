@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { imageState } from "../store/imageState";
 
 const ImageUploader = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useRecoilState(imageState);
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("event.target : ", event.target.files);
@@ -29,7 +32,7 @@ const ImageUploader = () => {
   };
 
   useEffect(() => {
-    console.log(" selectedImage : ", selectedImage);
+    console.log("selectedImage : ", selectedImage);
   }, [selectedImage]);
 
   return (
