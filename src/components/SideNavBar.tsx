@@ -15,10 +15,10 @@ import {
 } from "./icons";
 
 const menu = [
-  { title: "Text to Image", url: "/", iconOutlined: <KeyboardOutlined />, iconFilled: <KeyboardFilled /> },
+  { title: "Text to Image", url: "/txt2img", iconOutlined: <KeyboardOutlined />, iconFilled: <KeyboardFilled /> },
   { title: "Image to Image", url: "/", iconOutlined: <ImageUpscalingOutlined />, iconFilled: <ImageUpscalingFilled /> },
-  { title: "Video to 3D", url: "/", iconOutlined: <VideoOutlined />, iconFilled: <VideoFilled /> },
-  { title: "Settings", url: "/", iconOutlined: <SettingsOutlined />, iconFilled: <SettingsFilled /> },
+  { title: "Video to 3D", url: "/video23D", iconOutlined: <VideoOutlined />, iconFilled: <VideoFilled /> },
+  { title: "Settings", url: "/settings", iconOutlined: <SettingsOutlined />, iconFilled: <SettingsFilled /> },
 ];
 
 const SideNavBar = () => {
