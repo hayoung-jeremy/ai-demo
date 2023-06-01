@@ -7,3 +7,15 @@ body {
   color: #eee;
   min-height: 100vh;
 }
+
+.btn {
+  @apply w-full 
+    py-3 px-4 rounded-lg
+    bg-[#ffffff] bg-opacity-20 hover:bg-opacity-30
+    transition-all duration-[280ms];
+}
+
+.btn.negative {
+  @apply bg-[#e23e4c] 
+    bg-opacity-80 hover:bg-opacity-90;
+}

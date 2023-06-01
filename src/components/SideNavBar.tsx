@@ -44,7 +44,7 @@ const SideNavBar = () => {
               key={index}
               className={cls(
                 "",
-                "hover:bg-[#ffffff10] hover:mx-[-20px] hover:px-5 transition-all duration-200",
+                "hover:bg-[#ffffff10] hover:mx-[-20px] hover:px-5 transition-all duration-[280ms]",
                 selectedIndex === index ? "text-[#c092e9]" : "text-[#b0a7b8]"
               )}
             >
