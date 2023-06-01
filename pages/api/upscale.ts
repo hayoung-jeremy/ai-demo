@@ -10,7 +10,7 @@ export const config = {
 };
 
 const data = {
-  key: "3u2fGJmV99VCzGH83FvmZDDaA6gMoDyHIIvPEbUZ5to1drYDZapcHqEZKHDn",
+  key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
   prompt: "red shoes",
   negative_prompt: null,
   init_image: "",
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let imageLink = "";
   try {
     const { data: resultImage } = await axios.post("https://stablediffusionapi.com/api/v3/base64_crop", {
-      key: "3u2fGJmV99VCzGH83FvmZDDaA6gMoDyHIIvPEbUZ5to1drYDZapcHqEZKHDn",
+      key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
       image: req.body.init_image,
       crop: "true",
     });

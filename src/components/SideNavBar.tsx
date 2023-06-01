@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cls } from "@/utils";
 import Link from "next/link";
 import {
@@ -22,7 +22,17 @@ const menu = [
 ];
 
 const SideNavBar = () => {
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  useEffect(() => {
+    const storedIndex = localStorage.getItem("selectedIndex");
+    console.log("ASdlasld", storedIndex);
+    setSelectedIndex(storedIndex !== null ? parseInt(storedIndex) : 1);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("selectedIndex", selectedIndex.toString());
+    console.log("asfgaasgasgas as fas");
+  }, [selectedIndex]);
 
   return (
     <nav className={cls("w-[240px] h-full bg-[#ffffff10] backdrop-blur", "absolute top-0 left-0", "p-5")}>
