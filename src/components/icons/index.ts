@@ -7,3 +7,4 @@ export { default as VideoOutlined } from "./VideoOutlined";
 export { default as VideoFilled } from "./VideoFilled";
 export { default as SettingsOutlined } from "./SettingsOutlined";
 export { default as SettingsFilled } from "./SettingsFilled";
+export { default as Add } from "./Add";
