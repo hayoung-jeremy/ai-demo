@@ -1,9 +1,10 @@
-import "./globals.css";
 import { Play } from "next/font/google";
-
+import "./globals.css";
 import Provider from "./providers";
+import { SideNavBar } from "@/components";
+import { cls } from "@/utils";
 
-const inter = Play({ weight: "400", subsets: ["latin"] });
+const play = Play({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   title: "AI Demo",
@@ -13,8 +14,18 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Provider>{children}</Provider>
+      <body
+        className={cls(
+          play.className,
+          "bg-gradient-to-tr from-[#3b076450]",
+          "before:w-[300px] before:h-[300px] before:rounded-full before:bg-purple-600 before:absolute before:top-1/3 before:left-1/3 before:z-[-1] before:blur-[200px]",
+          "after:w-[200px] after:h-[120px] after:rounded-full after:bg-purple-700 after:absolute after:top-1/4 after:left-1/2 after:z-[-1] after:blur-[120px]"
+        )}
+      >
+        <Provider>
+          <SideNavBar />
+          <main className="pl-[240px] h-screen">{children}</main>
+        </Provider>
       </body>
     </html>
   );
