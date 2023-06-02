@@ -19,9 +19,10 @@ const ImageUploader = () => {
         fileRejections.forEach((file: { errors: any[] }) => {
           file.errors.forEach(err => {
             console.log(err);
-            setUploadingErr(err.message);
             if (err.code === "file-too-large") setUploadingErr("File is larger than 2mb. Please try smaller");
             if (err.code === "file-invalid-type") setUploadingErr("File type must be .png, .jpg, or .jpeg");
+            if (err.code === "too-many-files") setUploadingErr("You can only upload a single file at once");
+            else setUploadingErr(err.message);
           });
         });
         return;
@@ -40,6 +41,7 @@ const ImageUploader = () => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     maxSize: 1048576 * 2,
+    multiple: false,
     onDrop,
     accept: {
       "image/png": [".png"],

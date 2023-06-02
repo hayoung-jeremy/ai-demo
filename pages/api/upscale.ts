@@ -38,21 +38,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   //   });
   //   console.log("resultImage", resultImage.link);
   //   imageLink = resultImage.link;
-
   //   const response = await axios.post("https://stablediffusionapi.com/api/v3/img2img", {
   //     ...data,
   //     init_image: imageLink,
   //   });
-
-  //   return res.status(200).json(data);
+  //   return res.status(200).json(response.data);
   // } catch (error) {
   //   return res.status(500).json({ error: "Internal Server Error" });
   // }
-
   setTimeout(async () => {
     try {
       const data = {
-        output: ["https://altava-b2b-clarins.s3.ap-northeast-2.amazonaws.com/toy-puddle0.jpg"],
+        output: ["https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg"],
       };
       return res.status(200).json(data);
     } catch (error) {

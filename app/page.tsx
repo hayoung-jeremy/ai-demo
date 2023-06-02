@@ -1,11 +1,12 @@
 "use client";
 import { useRecoilValue } from "recoil";
-import { uploadedImgState } from "@/store/imageState";
+import { uploadedImgState, upscaledImgState } from "@/store/imageState";
 
-import { ImageController, ImageUploader, UpscaledImagePreviewer } from "@/components/img2img";
+import { ImageController, ImageDownloader, ImageUploader, UpscaledImagePreviewer } from "@/components/img2img";
 
 export default function Home() {
   const uploadedImage = useRecoilValue(uploadedImgState);
+  const upscaledImage = useRecoilValue(upscaledImgState);
 
   return (
     <section className="p-10 flex flex-col gap-5">
@@ -14,6 +15,7 @@ export default function Home() {
         <ImageUploader />
         <UpscaledImagePreviewer />
         {uploadedImage ? <ImageController /> : null}
+        {upscaledImage ? <ImageDownloader upscaledImage={upscaledImage} /> : null}
       </div>
     </section>
   );

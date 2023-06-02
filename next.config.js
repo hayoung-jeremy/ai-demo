@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "altava-b2b-clarins.s3.ap-northeast-2.amazonaws.com",
+        hostname: "image.dongascience.com",
         port: "",
         pathname: "/**",
       },
