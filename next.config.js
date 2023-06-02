@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "image.dongascience.com",
+        hostname: "upload.wikimedia.org",
         port: "",
         pathname: "/**",
       },

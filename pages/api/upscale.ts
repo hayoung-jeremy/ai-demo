@@ -46,10 +46,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // } catch (error) {
   //   return res.status(500).json({ error: "Internal Server Error" });
   // }
+
   setTimeout(async () => {
     try {
       const data = {
-        output: ["https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg"],
+        output: ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"],
       };
       return res.status(200).json(data);
     } catch (error) {
