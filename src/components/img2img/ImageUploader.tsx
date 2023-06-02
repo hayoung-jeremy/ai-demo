@@ -27,7 +27,15 @@ const ImageUploader = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="bg-[#ffffff16] backdrop-blur-[100px] min-h-full p-5 rounded-[12px]">
+      <div
+        className={cls(
+          "min-h-full",
+          "bg-[#ffffff16] backdrop-blur-[100px]",
+          "p-5 rounded-[20px]",
+          "border border-[#ffffff04] border-t-[#ffffff08] border-r-[#ffffff16]",
+          "shadow-[4px_4px_12px_12px_#00000020]"
+        )}
+      >
         {uploadedImage ? (
           <div className="w-[400px] aspect-square relative mx-auto">
             <Image src={uploadedImage} alt="Uploaded Image" fill style={{ objectFit: "contain" }} />
@@ -37,7 +45,7 @@ const ImageUploader = () => {
             {...getRootProps()}
             className={cls(
               "flex items-center justify-center",
-              "border hover:border-[#c092e960] h-full rounded",
+              "border hover:border-[#c092e960] h-full rounded-[8px]",
               "cursor-pointer",
               "transition-all duration-200",
               isDragActive ? "border-[#c092e960]" : "border-[#ffffff20]"
