@@ -10,12 +10,16 @@ body {
 
 .btn {
   @apply w-full 
-    py-3 px-4 rounded-lg
-    bg-[#ffffff] bg-opacity-20 hover:bg-opacity-30
+    py-4 px-4 rounded-[16px]
+    bg-[#ffffff] bg-opacity-[12%] hover:bg-opacity-[16%]
+    border border-transparent hover:border-[#ffffff20]
+    hover:shadow-[0px_0px_12px_8px_#ffffff12]
     transition-all duration-[280ms];
 }
 
 .btn.negative {
   @apply bg-[#e23e4c] 
-    bg-opacity-80 hover:bg-opacity-90;
+    bg-opacity-80 hover:bg-opacity-90
+    hover:border-[#e23e4c]
+    hover:shadow-[0px_0px_16px_8px_#e23e4c36];
 }
