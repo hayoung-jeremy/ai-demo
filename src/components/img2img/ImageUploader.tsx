@@ -23,7 +23,13 @@ const ImageUploader = () => {
     [setUploadedImage]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg", ".jpeg"],
+    },
+  });
 
   return (
     <div className="flex flex-col gap-4">

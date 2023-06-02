@@ -20,10 +20,15 @@ const ImageController = () => {
     }
   };
 
+  const removeImage = () => {
+    setUploadedImage(null);
+    setUpscaledImage(null);
+  };
+
   return (
     <aside className="">
       <div className="flex items-center justify-between gap-4">
-        <button onClick={() => setUploadedImage(null)} className="btn negative">
+        <button onClick={removeImage} className="btn negative">
           Remove image
         </button>
         <button disabled={uploadedImage ? false : true} onClick={upscalImage} className="btn">
