@@ -8,3 +8,4 @@ export { default as VideoFilled } from "./VideoFilled";
 export { default as SettingsOutlined } from "./SettingsOutlined";
 export { default as SettingsFilled } from "./SettingsFilled";
 export { default as Add } from "./Add";
+export { default as Error } from "./Error";
