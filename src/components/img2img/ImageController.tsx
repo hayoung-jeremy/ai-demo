@@ -1,22 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { uploadedImgState, upscaledImgState } from "@/store/imageState";
+import { imgUpscalingState, uploadedImgState, upscaledImgState } from "@/store/imageState";
+import { cls } from "@/utils";
+import SpinningLoader from "../SpinningLoader";
 
 const ImageController = () => {
   const [uploadedImage, setUploadedImage] = useRecoilState(uploadedImgState);
   const setUpscaledImage = useSetRecoilState(upscaledImgState);
 
-  const upscalImage = async () => {
+  const [isImgUpscaling, setIsImgUpscaling] = useRecoilState(imgUpscalingState);
+
+  const upscaleImage = async () => {
+    setIsImgUpscaling(true);
     try {
       const { data } = await axios.post("/api/upscale", {
         init_image: uploadedImage,
       });
       console.log("data : ", data);
       setUpscaledImage(data.output[0]);
+      setIsImgUpscaling(false);
     } catch (error) {
-      console.log(error);
+      setIsImgUpscaling(false);
     }
   };
 
@@ -27,15 +33,34 @@ const ImageController = () => {
 
   return (
     <aside className="">
+      <div className="">
+        <p>Prompt</p>
+      </div>
       <div className="flex items-center justify-between gap-4">
-        <button onClick={removeImage} className="btn negative">
-          Remove image
-        </button>
-        <button disabled={uploadedImage ? false : true} onClick={upscalImage} className="btn">
-          Upscale image
+        {!isImgUpscaling && (
+          <button
+            disabled={isImgUpscaling}
+            onClick={removeImage}
+            className={cls("btn negative", isImgUpscaling ? "w-0" : "")}
+          >
+            Remove image
+          </button>
+        )}
+        <button
+          disabled={isImgUpscaling}
+          onClick={upscaleImage}
+          className={cls("btn", "flex items-center justify-center gap-3", "")}
+        >
+          {isImgUpscaling ? (
+            <>
+              <SpinningLoader />
+              <span className="text-[#ffffff50]">processing... please wait</span>
+            </>
+          ) : (
+            "Upscale image"
+          )}
         </button>
       </div>
-      <div className="">1</div>
     </aside>
   );
 };

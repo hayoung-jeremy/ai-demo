@@ -14,7 +14,8 @@ body {
     bg-[#ffffff] bg-opacity-[12%] hover:bg-opacity-[16%]
     border border-transparent hover:border-[#ffffff20]
     hover:shadow-[0px_0px_12px_8px_#ffffff12]
-    transition-all duration-[280ms];
+    transition-all duration-[280ms]
+    disabled:cursor-not-allowed;
 }
 
 .btn.negative {

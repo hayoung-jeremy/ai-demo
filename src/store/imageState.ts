@@ -9,3 +9,8 @@ export const upscaledImgState = atom<string | null>({
   key: "upscaledImgState",
   default: null,
 });
+
+export const imgUpscalingState = atom({
+  key: "imgUpscalingState",
+  default: false,
+});
