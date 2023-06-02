@@ -10,6 +10,7 @@ body {
 
 .btn {
   @apply w-full 
+    flex items-center justify-center gap-3
     py-4 px-4 rounded-[16px]
     bg-[#ffffff] bg-opacity-[12%] hover:bg-opacity-[16%]
     border border-transparent hover:border-[#ffffff20]

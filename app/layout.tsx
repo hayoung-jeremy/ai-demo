@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cls(
           play.className,
-          "bg-gradient-to-tr from-[#3b076450]",
+          "bg-gradient-to-tr from-[#3b076450] via-[#2d1b4453] to-[#d65db228]",
           "before:w-[300px] before:h-[300px] before:rounded-full before:bg-purple-600 before:absolute before:top-1/3 before:left-1/3 before:z-[-1] before:blur-[200px]",
           "after:w-[200px] after:h-[120px] after:rounded-full after:bg-purple-700 after:absolute after:top-1/4 after:left-1/2 after:z-[-1] after:blur-[120px]"
         )}

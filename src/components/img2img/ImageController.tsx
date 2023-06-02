@@ -32,9 +32,9 @@ const ImageController = () => {
   };
 
   return (
-    <aside className="">
+    <aside className="flex flex-col gap-4">
       <div className="">
-        <p>Prompt</p>
+        <p className="text-[20px] text-[#b0a7b8]">Prompt</p>
       </div>
       <div className="flex items-center justify-between gap-4">
         {!isImgUpscaling && (
@@ -46,11 +46,7 @@ const ImageController = () => {
             Remove image
           </button>
         )}
-        <button
-          disabled={isImgUpscaling}
-          onClick={upscaleImage}
-          className={cls("btn", "flex items-center justify-center gap-3", "")}
-        >
+        <button disabled={isImgUpscaling} onClick={upscaleImage} className="btn">
           {isImgUpscaling ? (
             <>
               <SpinningLoader />
