@@ -29,28 +29,34 @@ const data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // base64_crop api
-  let imageLink = "";
-  try {
-    // const { data: resultImage } = await axios.post("https://stablediffusionapi.com/api/v3/base64_crop", {
-    //   key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
-    //   image: req.body.init_image,
-    //   crop: "true",
-    // });
-    // console.log("resultImage", resultImage.link);
-    // imageLink = resultImage.link;
+  // let imageLink = "";
+  // try {
+  //   const { data: resultImage } = await axios.post("https://stablediffusionapi.com/api/v3/base64_crop", {
+  //     key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
+  //     image: req.body.init_image,
+  //     crop: "true",
+  //   });
+  //   console.log("resultImage", resultImage.link);
+  //   imageLink = resultImage.link;
 
-    // const response = await axios.post("https://stablediffusionapi.com/api/v3/img2img", {
-    //   ...data,
-    //   init_image: imageLink,
-    // });
+  //   const response = await axios.post("https://stablediffusionapi.com/api/v3/img2img", {
+  //     ...data,
+  //     init_image: imageLink,
+  //   });
 
-    // return res.status(200).json(data);
+  //   return res.status(200).json(data);
+  // } catch (error) {
+  //   return res.status(500).json({ error: "Internal Server Error" });
+  // }
 
-    const data = {
-      output: ["https://altava-b2b-clarins.s3.ap-northeast-2.amazonaws.com/toy-puddle0.jpg"],
-    };
-    return res.status(200).json(data);
-  } catch (error) {
-    return res.status(500).json({ error: "Internal Server Error" });
-  }
+  setTimeout(async () => {
+    try {
+      const data = {
+        output: ["https://altava-b2b-clarins.s3.ap-northeast-2.amazonaws.com/toy-puddle0.jpg"],
+      };
+      return res.status(200).json(data);
+    } catch (error) {
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  }, 3000);
 }

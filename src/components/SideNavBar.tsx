@@ -25,13 +25,11 @@ const SideNavBar = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   useEffect(() => {
     const storedIndex = sessionStorage.getItem("selectedIndex");
-    console.log("ASdlasld", storedIndex);
     setSelectedIndex(storedIndex !== null ? parseInt(storedIndex) : 1);
   }, []);
 
   useEffect(() => {
     sessionStorage.setItem("selectedIndex", selectedIndex.toString());
-    console.log("asfgaasgasgas as fas");
   }, [selectedIndex]);
 
   return (
