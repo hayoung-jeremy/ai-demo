@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // let imageLink = "";
   // try {
   //   const { data: resultImage } = await axios.post("https://stablediffusionapi.com/api/v3/base64_crop", {
-  //     key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
+  //     key: process.env.SD_API_KEY,
   //     image: req.body.init_image,
   //     crop: "true",
   //   });
