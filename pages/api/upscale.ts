@@ -10,7 +10,7 @@ export const config = {
 };
 
 const data = {
-  key: "timwu7QQYn8U4zdsoHemV0xcCHgPqA3B6fyvyMSSGR9BlmERXZ5Yl1HHLam3",
+  key: process.env.SD_API_KEY,
   prompt: "red shoes",
   negative_prompt: null,
   init_image: "",
