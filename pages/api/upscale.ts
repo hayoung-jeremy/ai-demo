@@ -1,5 +1,6 @@
-import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
+import axios from "axios";
+import { stableDiffusionV3Img2ImgURL, stableDiffusionV3base64cropURL } from "@/constants";
 
 export const config = {
   api: {
@@ -31,14 +32,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // base64_crop api
   // let imageLink = "";
   // try {
-  //   const { data: resultImage } = await axios.post("https://stablediffusionapi.com/api/v3/base64_crop", {
+  //   const { data: resultImage } = await axios.post(stableDiffusionV3base64cropURL, {
   //     key: process.env.SD_API_KEY,
   //     image: req.body.init_image,
   //     crop: "true",
   //   });
   //   console.log("resultImage", resultImage.link);
   //   imageLink = resultImage.link;
-  //   const response = await axios.post("https://stablediffusionapi.com/api/v3/img2img", {
+  //   const response = await axios.post(stableDiffusionV3Img2ImgURL, {
   //     ...data,
   //     init_image: imageLink,
   //   });
