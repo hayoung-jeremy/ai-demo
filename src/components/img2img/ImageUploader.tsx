@@ -3,15 +3,16 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { imgUpscalingState, uploadedImgState } from "@/store/imageState";
+import { imgGeneratingState, uploadedImgState } from "@/store/img2img";
 import { cls } from "@/utils";
+
 import { Add, Error } from "../icons";
 import SpinningLoader from "../SpinningLoader";
 
 const ImageUploader = () => {
   const [uploadedImage, setUploadedImage] = useRecoilState(uploadedImgState);
   const [uploadingErr, setUploadingErr] = useState<any>(null);
-  const isImgUpscaling = useRecoilValue(imgUpscalingState);
+  const isImgGenerating = useRecoilValue(imgGeneratingState);
 
   const onDrop = useCallback(
     (acceptedFiles: any, fileRejections: any) => {
@@ -65,7 +66,7 @@ const ImageUploader = () => {
           "shadow-[4px_4px_12px_12px_#00000020]"
         )}
       >
-        {isImgUpscaling && (
+        {isImgGenerating && (
           <div
             className={cls(
               "absolute top-0 left-0 z-10",

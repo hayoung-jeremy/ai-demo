@@ -1,13 +1,13 @@
 "use client";
 import { useRecoilValue } from "recoil";
-import { uploadedImgState, upscaledImgState } from "@/store/imageState";
+import { uploadedImgState, generatedImgState } from "@/store/img2img";
 
-import { ImageController, ImageDownloader, ImageUploader, UpscaledImagePreviewer } from "@/components/img2img";
+import { ImageController, ImageDownloader, ImageUploader, ImagePreviewer } from "@/components/img2img";
 import { useEffect } from "react";
 
 export default function Home() {
   const uploadedImage = useRecoilValue(uploadedImgState);
-  const upscaledImage = useRecoilValue(upscaledImgState);
+  const upscaledImage = useRecoilValue(generatedImgState);
 
   useEffect(() => {
     console.log("upscaledImage : ", upscaledImage);
@@ -18,7 +18,7 @@ export default function Home() {
       <h2 className="text-[28px] text-[#b0a7b8]">Image to image</h2>
       <div className="grid grid-cols-2 gap-x-10 gap-y-6 min-h-[300px]">
         <ImageUploader />
-        <UpscaledImagePreviewer />
+        <ImagePreviewer />
         {uploadedImage ? <ImageController /> : null}
         {upscaledImage ? <ImageDownloader upscaledImage={upscaledImage} /> : null}
       </div>

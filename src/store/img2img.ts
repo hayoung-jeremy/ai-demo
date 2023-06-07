@@ -5,12 +5,12 @@ export const uploadedImgState = atom<string | null>({
   default: null,
 });
 
-export const upscaledImgState = atom<string | null>({
-  key: "upscaledImgState",
+export const generatedImgState = atom<string | null>({
+  key: "generatedImgState",
   default: null,
 });
 
-export const imgUpscalingState = atom({
-  key: "imgUpscalingState",
+export const imgGeneratingState = atom({
+  key: "imgGeneratingState",
   default: false,
 });

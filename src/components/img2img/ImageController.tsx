@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { imgUpscalingState, uploadedImgState, upscaledImgState } from "@/store/imageState";
+import { imgGeneratingState, uploadedImgState, generatedImgState } from "@/store/img2img";
 import { cls } from "@/utils";
+
 import SpinningLoader from "../SpinningLoader";
 
 const ImageController = () => {
   const [uploadedImage, setUploadedImage] = useRecoilState(uploadedImgState);
-  const setUpscaledImage = useSetRecoilState(upscaledImgState);
+  const setGeneratedImage = useSetRecoilState(generatedImgState);
 
-  const [isImgUpscaling, setIsImgUpscaling] = useRecoilState(imgUpscalingState);
+  const [isImgGenerating, setIsImgGenerating] = useRecoilState(imgGeneratingState);
 
   const upscaleImage = async () => {
-    setIsImgUpscaling(true);
+    setIsImgGenerating(true);
     try {
       const { data } = await axios.post("/api/upscale", {
         init_image: uploadedImage,
@@ -51,20 +52,20 @@ const ImageController = () => {
 
         const response: any = await fetchQueuedImages(request_id, estimatedSeconds);
 
-        setUpscaledImage(response.data.output[0]);
-        setIsImgUpscaling(false);
+        setGeneratedImage(response.data.output[0]);
+        setIsImgGenerating(false);
       } else {
-        setUpscaledImage(data.output[0]);
-        setIsImgUpscaling(false);
+        setGeneratedImage(data.output[0]);
+        setIsImgGenerating(false);
       }
     } catch (error) {
-      setIsImgUpscaling(false);
+      setIsImgGenerating(false);
     }
   };
 
   const removeImage = () => {
     setUploadedImage(null);
-    setUpscaledImage(null);
+    setGeneratedImage(null);
   };
 
   return (
@@ -85,17 +86,17 @@ const ImageController = () => {
         </div>
       </div>
       <div className="flex items-center justify-between gap-4">
-        {!isImgUpscaling && (
+        {!isImgGenerating && (
           <button
-            disabled={isImgUpscaling}
+            disabled={isImgGenerating}
             onClick={removeImage}
-            className={cls("btn negative", isImgUpscaling ? "w-0" : "")}
+            className={cls("btn negative", isImgGenerating ? "w-0" : "")}
           >
             Remove image
           </button>
         )}
-        <button disabled={isImgUpscaling} onClick={upscaleImage} className="btn">
-          {isImgUpscaling ? (
+        <button disabled={isImgGenerating} onClick={upscaleImage} className="btn">
+          {isImgGenerating ? (
             <>
               <SpinningLoader />
               <span className="text-[#ffffff50]">processing... please wait</span>

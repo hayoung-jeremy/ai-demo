@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
-import { upscaledImgState } from "@/store/imageState";
+import { generatedImgState } from "@/store/img2img";
 
 import { cls } from "@/utils";
 
-const UpscaledImagePreviewer = () => {
-  const upscaledImage = useRecoilValue(upscaledImgState);
+const ImagePreviewer = () => {
+  const upscaledImage = useRecoilValue(generatedImgState);
 
   return (
     <div className="flex flex-col gap-4">
@@ -31,4 +31,4 @@ const UpscaledImagePreviewer = () => {
   );
 };
 
-export default UpscaledImagePreviewer;
+export default ImagePreviewer;
