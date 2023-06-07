@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { stableDiffusionV3Img2ImgURL, stableDiffusionV3base64cropURL, v3DummyData, v4DummyData } from "@/constants";
+import {
+  stableDiffusionV3Img2ImgURL,
+  stableDiffusionV3base64cropURL,
+  stableDiffusionV4Img2ImgURL,
+  v3DummyData,
+  v4DummyData,
+} from "@/constants";
 
 export const config = {
   api: {
@@ -21,13 +27,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     console.log("resultImage", resultImage.link);
     imageLink = resultImage.link;
-    const response = await axios.post(stableDiffusionV3Img2ImgURL, {
+    const response = await axios.post(stableDiffusionV4Img2ImgURL, {
       ...v4DummyData,
       init_image: imageLink,
     });
     return res.status(200).json(response.data);
   } catch (error) {
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "[upscale] Internal Server Error" });
   }
 
   // setTimeout(async () => {

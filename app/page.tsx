@@ -3,10 +3,15 @@ import { useRecoilValue } from "recoil";
 import { uploadedImgState, upscaledImgState } from "@/store/imageState";
 
 import { ImageController, ImageDownloader, ImageUploader, UpscaledImagePreviewer } from "@/components/img2img";
+import { useEffect } from "react";
 
 export default function Home() {
   const uploadedImage = useRecoilValue(uploadedImgState);
   const upscaledImage = useRecoilValue(upscaledImgState);
+
+  useEffect(() => {
+    console.log("upscaledImage : ", upscaledImage);
+  }, [upscaledImage]);
 
   return (
     <section className="p-10 flex flex-col gap-5">
