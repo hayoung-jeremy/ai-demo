@@ -14,3 +14,8 @@ export const imgGeneratingState = atom({
   key: "imgGeneratingState",
   default: false,
 });
+
+export const backgroundProcessingState = atom({
+  key: "backgroundProcessingState",
+  default: { isProcessing: false, estimatedTime: 0 },
+});

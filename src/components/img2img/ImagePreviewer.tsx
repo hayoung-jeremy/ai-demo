@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
-import { generatedImgState, imgGeneratingState } from "@/store/img2img";
+import { backgroundProcessingState, generatedImgState, imgGeneratingState } from "@/store/img2img";
 
 import { cls } from "@/utils";
 import SpinningLoader from "../SpinningLoader";
@@ -9,6 +9,7 @@ import SpinningLoader from "../SpinningLoader";
 const ImagePreviewer = () => {
   const generatedImage = useRecoilValue(generatedImgState);
   const isImgGenerating = useRecoilValue(imgGeneratingState);
+  const { isProcessing, estimatedTime } = useRecoilValue(backgroundProcessingState);
 
   return (
     <div className="flex flex-col gap-4">
@@ -26,11 +27,26 @@ const ImagePreviewer = () => {
             : ""
         )}
       >
+        {isProcessing ? (
+          <p
+            className={cls(
+              "absolute top-4 right-4",
+              "px-3 py-1",
+              "border border-[#c092e960] rounded",
+              "text-[#b0a7b8]"
+            )}
+          >
+            will be available within <span className="text-[#c092e9]">{estimatedTime}</span> seconds
+          </p>
+        ) : null}
         <div className={cls("w-[400px] aspect-square relative mx-auto", "flex items-center justify-center")}>
           {isImgGenerating ? (
-            <div className="flex items-center justify-center gap-4">
-              <SpinningLoader />
-              <p className="text-[#b0a7b8]">Generating ...</p>
+            <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-3">
+                <SpinningLoader />
+                <p className="text-[#b0a7b8]">Generating ...</p>
+              </div>
+              {isProcessing ? <p>Your image is processing in background</p> : null}
             </div>
           ) : generatedImage ? (
             <Image src={generatedImage} alt="upscaled image" fill style={{ objectFit: "contain" }} />
