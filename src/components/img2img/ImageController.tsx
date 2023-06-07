@@ -72,7 +72,7 @@ const ImageController = () => {
     <aside className="flex flex-col gap-4">
       <div className="">
         <p className="text-[20px] text-[#b0a7b8]">Prompt</p>
-        <div className="">
+        {/* <div className="">
           <p>Sampling steps</p>
           <input type="text" />
         </div>
@@ -83,7 +83,7 @@ const ImageController = () => {
             creative results)
           </p>
           <input type="text" />
-        </div>
+        </div> */}
       </div>
       <div className="flex items-center justify-between gap-4">
         {!isImgGenerating && (
@@ -92,7 +92,7 @@ const ImageController = () => {
             onClick={removeImage}
             className={cls("btn negative", isImgGenerating ? "w-0" : "")}
           >
-            Remove image
+            Remove
           </button>
         )}
         <button disabled={isImgGenerating} onClick={upscaleImage} className="btn">
@@ -102,7 +102,7 @@ const ImageController = () => {
               <span className="text-[#ffffff50]">processing... please wait</span>
             </>
           ) : (
-            "Generate image"
+            "Generate"
           )}
         </button>
       </div>

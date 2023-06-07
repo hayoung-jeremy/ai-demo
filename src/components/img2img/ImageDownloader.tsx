@@ -1,15 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 
 interface Props {
-  upscaledImage: string;
+  generatedImage: string;
 }
 
-const ImageDownloader = ({ upscaledImage }: Props) => {
-  const [downloadURL, setDownloadURL] = useState<string | null>(null);
-
+const ImageDownloader = ({ generatedImage }: Props) => {
   const handleDownload = async () => {
-    const res = await axios.get(upscaledImage, { responseType: "blob" });
+    const res = await axios.get(generatedImage, { responseType: "blob" });
     const blob = await res.data.arrayBuffer();
     const url = URL.createObjectURL(new Blob([blob], { type: "image/png" }));
     const link = document.createElement("a");
@@ -26,9 +23,9 @@ const ImageDownloader = ({ upscaledImage }: Props) => {
         <p className="text-[20px] text-[#b0a7b8]">Result</p>
       </div>
       <div className="flex items-center justify-between gap-4">
-        {upscaledImage ? (
+        {generatedImage ? (
           <button onClick={handleDownload} className="btn">
-            Download image
+            Download
           </button>
         ) : null}
         <div className="w-full" />

@@ -1,17 +1,18 @@
 "use client";
 import { useRecoilValue } from "recoil";
-import { uploadedImgState, generatedImgState } from "@/store/img2img";
+import { uploadedImgState, generatedImgState, imgGeneratingState } from "@/store/img2img";
 
 import { ImageController, ImageDownloader, ImageUploader, ImagePreviewer } from "@/components/img2img";
 import { useEffect } from "react";
 
 export default function Home() {
   const uploadedImage = useRecoilValue(uploadedImgState);
-  const upscaledImage = useRecoilValue(generatedImgState);
+  const generatedImage = useRecoilValue(generatedImgState);
+  const isImgGenerating = useRecoilValue(imgGeneratingState);
 
   useEffect(() => {
-    console.log("upscaledImage : ", upscaledImage);
-  }, [upscaledImage]);
+    console.log("generatedImage : ", generatedImage);
+  }, [generatedImage]);
 
   return (
     <section className="p-10 flex flex-col gap-5">
@@ -20,7 +21,7 @@ export default function Home() {
         <ImageUploader />
         <ImagePreviewer />
         {uploadedImage ? <ImageController /> : null}
-        {upscaledImage ? <ImageDownloader upscaledImage={upscaledImage} /> : null}
+        {generatedImage && !isImgGenerating ? <ImageDownloader generatedImage={generatedImage} /> : null}
       </div>
     </section>
   );
