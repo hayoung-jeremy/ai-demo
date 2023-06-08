@@ -66,6 +66,43 @@ const ImageController = () => {
     }
   };
 
+  const fetchImgFromStreamData = async (task_id: number) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(async () => {
+        try {
+          const { data: streamData } = await axios.get("/api/easydiffusion", {
+            params: {
+              task_id,
+            },
+          });
+          if (streamData === "" || !streamData || !streamData.includes(`"status": "succeeded"`)) {
+            // console.log("데이터 아직 없음");
+            resolve(await fetchImgFromStreamData(task_id));
+          } else {
+            // data 있음
+            // console.log("데이터 있음");
+            console.log(streamData);
+            resolve(streamData);
+            setIsImgGenerating(false);
+          }
+        } catch (error) {
+          reject(error);
+        }
+      }, 1000);
+    });
+  };
+
+  const generateImgFromEasyDiffusion = async () => {
+    setIsImgGenerating(true);
+    const { data } = await axios.post("/api/easydiffusion", {
+      init_image: uploadedImage,
+    });
+    console.log("generateImgFromEasyDiffusion data", data);
+    const task_id = data.task;
+
+    await fetchImgFromStreamData(task_id);
+  };
+
   const removeImage = () => {
     setUploadedImage(null);
     setGeneratedImage(null);
@@ -107,6 +144,9 @@ const ImageController = () => {
           ) : (
             "Generate"
           )}
+        </button>
+        <button className="btn" onClick={generateImgFromEasyDiffusion}>
+          Easy diffusion
         </button>
       </div>
     </aside>

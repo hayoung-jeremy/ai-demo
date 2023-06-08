@@ -20,6 +20,7 @@ export const v3DummyData = {
   webhook: null,
   track_id: null,
 };
+
 export const v4DummyData = {
   key: process.env.SD_API_KEY,
   model_id: "midjourney",
@@ -44,4 +45,37 @@ export const v4DummyData = {
   embeddings_model: null,
   webhook: null,
   track_id: null,
+};
+
+export const easyDiffusionDummyPayload = {
+  prompt: "xyz, a gorgeous handbag",
+  seed: 1368064844,
+  used_random_seed: true,
+  negative_prompt: "person",
+  num_outputs: 1,
+  num_inference_steps: 25,
+  guidance_scale: 7.5,
+  width: 512,
+  height: 512,
+  vram_usage_level: "balanced",
+  sampler_name: "euler_a",
+  use_stable_diffusion_model: "fineTunedHandbagsModel_v10",
+  clip_skip: false,
+  tiling: "none",
+  use_vae_model: "",
+  stream_progress_updates: true,
+  stream_image_progress: false,
+  show_only_filtered_image: true,
+  block_nsfw: false,
+  output_format: "jpeg",
+  output_quality: 75,
+  output_lossless: false,
+  metadata_output_format: "none",
+  original_prompt: "xyz, a gorgeous handbag",
+  active_tags: [],
+  inactive_tags: [],
+  init_image: "",
+  prompt_strength: 0.8,
+  preserve_init_image_color_profile: false,
+  session_id: "1686131471882",
 };
