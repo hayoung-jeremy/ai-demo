@@ -41,11 +41,16 @@ const SideNavBar = () => {
             <li
               key={index}
               className={cls(
-                "bg-gradient-to-r mx-[-20px] px-5",
+                "relative",
+                "mx-[-20px] px-5",
                 "transition-all duration-[280ms]",
+                "before:h-full",
+                "before:absolute before:top-0 before:left-0 before:z-[-1]",
+                "before:bg-gradient-to-r",
+                "before:transition-all before:duration-[280ms]",
                 selectedIndex === index
-                  ? "text-[#c092e9] from-[#9c4ce23b]"
-                  : "text-[#b0a7b8] from-[#ffffff00] hover:from-[#ffffff10]"
+                  ? "text-[#c092e9] before:from-[#9c4ce23b] before:w-full"
+                  : "text-[#b0a7b8] before:from-[#ffffff00] hover:before:from-[#ffffff10] hover:before:w-[100%] before:w-[0%]"
               )}
             >
               <Link className="flex gap-2 py-2" href={menulist.url} onClick={() => setSelectedIndex(index)}>
