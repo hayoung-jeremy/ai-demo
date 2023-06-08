@@ -49,7 +49,7 @@ export const v4DummyData = {
 
 export const easyDiffusionDummyPayload = {
   prompt: "a red shoes with Louis Vuitton Logo on it",
-  seed: 1368064844,
+  seed: 12,
   used_random_seed: true,
   negative_prompt: "person",
   num_outputs: 1,
@@ -67,11 +67,11 @@ export const easyDiffusionDummyPayload = {
   stream_image_progress: false,
   show_only_filtered_image: true,
   block_nsfw: false,
-  output_format: "jpeg",
-  output_quality: 75,
+  output_format: "png",
+  output_quality: 100,
   output_lossless: false,
   metadata_output_format: "none",
-  original_prompt: "xyz, a gorgeous handbag",
+  // original_prompt: "",
   active_tags: [],
   inactive_tags: [],
   init_image: "",
