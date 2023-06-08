@@ -2,6 +2,14 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { stableDiffusionV4FetchQueuedImagesURL } from "@/constants";
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "4mb",
+    },
+  },
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const request_id = req.body.request_id;
   const estimatedSeconds = req.body.estimatedSeconds;

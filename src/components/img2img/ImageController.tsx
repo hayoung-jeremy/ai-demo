@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { imgGeneratingState, uploadedImgState, generatedImgState, backgroundProcessingState } from "@/store/img2img";
@@ -75,25 +74,15 @@ const ImageController = () => {
               task_id,
             },
           });
-          if (streamData === "" || !streamData || !streamData.includes(`"status": "succeeded"`)) {
-            // console.log("데이터 아직 없음");
-            resolve(await fetchImgFromStreamData(task_id));
-          } else {
-            // data 있음
-            // console.log("데이터 있음");
-            console.log(streamData);
-            const step1 = streamData.split('"output":');
-            const step2 = step1[1].split('[{"data":');
-            const step3 = step2[1].split('"');
-            const result = step3[1];
 
-            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step1:", step1);
-            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step2:", step2);
-            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step3:", step3);
-            console.log("result : ", result);
-            resolve(result);
-            setGeneratedImage(result);
+          if (typeof streamData === "object" && streamData.hasOwnProperty("output")) {
+            // console.log("streamData 는 Object 입니다.");
+            resolve(streamData.output[0]);
+            setGeneratedImage(streamData.output[0].data);
             setIsImgGenerating(false);
+          } else {
+            // console.log(`streamData의 타입은 [${typeof streamData}] 입니다.`);
+            resolve(await fetchImgFromStreamData(task_id));
           }
         } catch (error) {
           reject(error);
@@ -107,7 +96,7 @@ const ImageController = () => {
     const { data } = await axios.post("/api/easydiffusion", {
       init_image: uploadedImage,
     });
-    console.log("generateImgFromEasyDiffusion data", data);
+    // console.log("generateImgFromEasyDiffusion data", data);
     const task_id = data.task;
 
     await fetchImgFromStreamData(task_id);

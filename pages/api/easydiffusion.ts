@@ -2,6 +2,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { easyDiffusionDummyPayload } from "@/constants";
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "4mb",
+    },
+  },
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     try {
