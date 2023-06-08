@@ -93,7 +93,10 @@ const ImageUploader = () => {
               isDragActive ? "border-[#c092e960]" : "border-[#ffffff20]"
             )}
           >
-            <input {...getInputProps()} className="outline-none focus:ring-0 focus:outline-none active:outline-none" />
+            <input
+              {...getInputProps()}
+              className="outline-none ring-0 focus:ring-0 focus:outline-none active:outline-none"
+            />
             {isDragActive ? (
               <div className="text-[#c092e990] flex flex-col items-center justify-center gap-2">
                 <Add width={48} height={48} />

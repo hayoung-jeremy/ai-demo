@@ -11,6 +11,7 @@ body {
 .btn {
   @apply w-full 
     flex items-center justify-center gap-3
+    outline-none ring-0
     py-4 px-4 rounded-[16px]
     bg-[#ffffff] bg-opacity-[12%] hover:bg-opacity-[16%]
     border border-transparent hover:border-[#ffffff20]
@@ -24,4 +25,17 @@ body {
     bg-opacity-80 hover:bg-opacity-90
     hover:border-[#e23e4c]
     hover:shadow-[0px_0px_16px_8px_#e23e4c36];
+}
+
+.text_area {
+  @apply w-full min-h-[80px] max-h-[120px]
+    px-3 py-2
+    bg-[#ffffff12]
+    outline-none ring-0
+    border border-transparent rounded
+    text-[#c092e9]
+    text-[14px] placeholder:text-[#ffffff40]
+    transition-all duration-[280ms]
+    hover:bg-[#ffffff16] focus:border-[#c092e960] focus:shadow-[0px_0px_12px_4px_#c092e920]
+    disabled:text-[#c092e960] disabled:bg-[#ffffff20] disabled:cursor-not-allowed;
 }
