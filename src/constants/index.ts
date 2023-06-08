@@ -48,7 +48,7 @@ export const v4DummyData = {
 };
 
 export const easyDiffusionDummyPayload = {
-  prompt: "xyz, a gorgeous handbag",
+  prompt: "a red shoes with Louis Vuitton Logo on it",
   seed: 1368064844,
   used_random_seed: true,
   negative_prompt: "person",

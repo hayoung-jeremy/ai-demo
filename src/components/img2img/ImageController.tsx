@@ -82,7 +82,17 @@ const ImageController = () => {
             // data 있음
             // console.log("데이터 있음");
             console.log(streamData);
-            resolve(streamData);
+            const step1 = streamData.split('"output":');
+            const step2 = step1[1].split('[{"data":');
+            const step3 = step2[1].split('"');
+            const result = step3[1];
+
+            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step1:", step1);
+            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step2:", step2);
+            console.log("🚀 ~ file: ImageController.tsx:86 ~ setTimeout ~ step3:", step3);
+            console.log("result : ", result);
+            resolve(result);
+            setGeneratedImage(result);
             setIsImgGenerating(false);
           }
         } catch (error) {
@@ -145,9 +155,11 @@ const ImageController = () => {
             "Generate"
           )}
         </button>
-        <button className="btn" onClick={generateImgFromEasyDiffusion}>
-          Easy diffusion
-        </button>
+        {!isImgGenerating && (
+          <button className="btn" onClick={generateImgFromEasyDiffusion}>
+            Generate from Easy Diffusion
+          </button>
+        )}
       </div>
     </aside>
   );
