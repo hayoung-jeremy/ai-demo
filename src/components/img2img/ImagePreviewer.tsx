@@ -49,7 +49,7 @@ const ImagePreviewer = () => {
               {isProcessing ? <p>Your image is processing in background</p> : null}
             </div>
           ) : generatedImage ? (
-            <Image src={generatedImage} alt="upscaled image" fill style={{ objectFit: "contain" }} />
+            <Image src={generatedImage} alt="generated image" fill style={{ objectFit: "contain" }} />
           ) : (
             <p className="text-[#b0a7b8] text-center">Your image will show up here</p>
           )}

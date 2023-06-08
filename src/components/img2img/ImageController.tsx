@@ -16,7 +16,7 @@ const ImageController = () => {
   const generateImg = async () => {
     setIsImgGenerating(true);
     try {
-      const { data } = await axios.post("/api/upscale", {
+      const { data } = await axios.post("/api/img2img", {
         init_image: uploadedImage,
       });
       console.log("data : ", data);

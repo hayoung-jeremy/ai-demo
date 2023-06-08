@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     return res.status(200).json(response.data);
   } catch (error) {
-    return res.status(500).json({ error: "[upscale] Internal Server Error" });
+    return res.status(500).json({ error: "[img2img] Internal Server Error" });
   }
 
   // setTimeout(async () => {

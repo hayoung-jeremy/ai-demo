@@ -11,7 +11,7 @@ const ImageDownloader = ({ generatedImage }: Props) => {
     const url = URL.createObjectURL(new Blob([blob], { type: "image/png" }));
     const link = document.createElement("a");
     link.href = url;
-    link.download = "upscaled_image.png";
+    link.download = "generated_image.png";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
