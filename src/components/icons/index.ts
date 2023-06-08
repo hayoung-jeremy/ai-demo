@@ -9,3 +9,4 @@ export { default as SettingsOutlined } from "./SettingsOutlined";
 export { default as SettingsFilled } from "./SettingsFilled";
 export { default as Add } from "./Add";
 export { default as Error } from "./Error";
+export { default as Help } from "./Help";
